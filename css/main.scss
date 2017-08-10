@@ -1,8 +1,333 @@
 ---
 ---
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
 
-$ahsc: hsl(120deg, 50%, 50%);
-body {
-    background-color: $ahsc;
-    color: lighten($ahsc, 100%);
+
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+
+/*Variabelen*/
+
+$title: #f2f2f3;
+$content: #231f20;
+$primary-color: #3c6530;
+$secondary-color: #f4774a;
+$bg-color: #efeff5;
+
+html, body {
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    margin: 25px;
+}
+
+.item {
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.button {
+    background-color: $secondary-color;
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+    margin: 0 auto;
+}
+
+.top-right {
+    float: right;
+    margin: 1em;
+    position: fixed;
+    top: 0;
+    left: 73%;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 15px;
+    width: 100%;
+}
+
+.close-button {
+    position: fixed;
+    bottom: 80px;
+    width: 100%;
+}
+
+.bottom-left {
+    float: left;
+    margin-left: 5%;
+}
+
+.bottom-middle {
+    float: left;
+    position: absolute;
+    margin: 0 0 0 -33px;
+    left: 50%;
+}
+
+.bottom-right {
+    float: right;
+    margin-right: 5%;
+}
+
+.settings {
+    background: url(images/settings.svg);
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 70%;
+    position: relative;
+    top: 15%;
+    left: 15%;
+}
+
+.leaderboard {
+    background: url(images/leaderboard.svg);
+    background-repeat: no-repeat;
+    height: 3.3em;
+    width: 3.3em;
+    position: relative;
+    top: 8%;
+    left: 9%
+}
+
+.collection {
+    background: url(images/collection.svg);
+    background-repeat: no-repeat;
+    height: 70%;
+    width: 70%;
+    position: relative;
+    top: 15%;
+    left: 15%
+}
+
+.nearby {
+    background: url(images/nearby.svg);
+    background-repeat: no-repeat;
+    height: 75%;
+    width: 75%;
+    position: relative;
+    top: 12%;
+    left: 12%
+}
+
+.close {
+    background: url(images/close.svg);
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.tiles {
+    float: left;
+    height: 85px;
+    width: 85px;
+    background-color: #80b15e;
+    margin-top: 5%;
+    margin-right: 5%;
+}
+
+.top-nav {
+    padding: 1em 18em;
+    background: $primary-color;
+}
+
+    h1 {
+    color: $title;
+    font-size: 1.5em;
+    font-weight: 100;
+    line-height: .9em;
+    text-align: center;
+    }
+
+h2 {
+    font-size: 16pt;
+    color: $content;
+    float: left;
+}
+
+ul {
+    margin: 10px 0;
+}
+
+li {
+    margin-top: 5px;
+}
+    a h2 {
+        float: none;
+    }
+
+.line {
+    height: 3px;
+    width: 100%;
+    background-color: #432416;
+    margin: 25px 0;
+}
+
+.tgl {
+	display: none;
+  
+	// add default box-sizing for this scope
+	&,
+  &:after,
+  &:before,
+	& *,
+  & *:after,
+  & *:before,
+	& + .tgl-btn {
+		box-sizing: border-box;
+		&::selection {
+			background: none;
+		}
+	}
+  
+	+ .tgl-btn {
+		outline: 0;
+		display: block;
+		width: 4em;
+		height: 2em;
+		position: relative;
+		cursor: pointer;
+    user-select: none;
+		&:after,
+    &:before {
+			position: relative;
+			display: block;
+			content: "";
+			width: 50%;
+			height: 100%;
+		}
+    
+		&:after {
+			left: 0;
+		}
+    
+		&:before {
+			display: none;
+		}
+	}
+  
+	&:checked + .tgl-btn:after {
+		left: 50%;
+	}
+}
+
+// themes
+.tgl-light {
+	+ .tgl-btn {
+		background: #e7e5e5;
+		border-radius: 2em;
+		padding: 2px;
+        transition: all .4s ease;
+        right: -80%;
+		&:after {
+			border-radius: 50%;
+			background: #fff;
+			transition: all .2s ease;
+		}
+	}
+  
+	&:checked + .tgl-btn {
+		background: #9FD6AE;
+	}
+}
+
+@media(max-width:1440px){
+    .top-nav {
+        padding: 1em 12em;
+    }
+}
+@media(max-width:1280px){
+    .top-nav {
+        padding: 1em 8em;
+    }
+}
+@media(max-width:1080px){
+    .top-nav {
+        padding: 1em 1em;
+    }
+    h2 {
+        font-size: 16pt;
+    }
+}
+@media(max-width:991px){
+
+}
+@media(max-width:800px){
+    h2 {
+        font-size: 16pt;
+    }
+
+    .agileinfo-row {
+        width: 90%;
+    }
+}
+@media(max-width:667px){
+    h2 {
+        font-size: 16pt;
+    }
+}
+@media(max-width:480px){
+    .copyright p {
+        font-size: 0.9em;
+        padding: 0 1em;
+    }
+    h2 {
+        font-size: 16pt;
+    }
+}
+@media(max-width:414px){
+}
+@media(max-width:384px){
+    h2 {
+        font-size: 16pt;
+    }
+}
+@media(max-width:375px){
+}
+@media(max-width:320px){
+    .copyright p {
+        font-size: 0.8em;
+    }
+    .top-nav {
+        padding: 1em 0em;
+    }
+    h2 {
+        font-size: 7em;
+        margin-top: 10px;
+    }
+    .agileinfo-row {
+        width: 100%;
+    }
+    .copyright p {
+        padding: 0 0.8em;
+        letter-spacing: 1px;
+    }
 }
