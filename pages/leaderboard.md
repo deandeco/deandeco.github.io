@@ -3,4 +3,4 @@ layout  : leaderboard
 title   : "Leaderboard" 
 permalink: /home/leaderboard/
 ---
-qdfqdfqsdfqdf
+<div id="output">test</div>

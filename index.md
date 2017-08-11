@@ -13,7 +13,7 @@ title: "Home"
         <a class="button bottom-middle" href="/home/collection/">
             <div class="collection"></div>
         </a>
-        <a class="button bottom-right" href="#">
+        <a class="button bottom-right" href="local">
             <div class="nearby"></div>
         </a>
     </div>
