@@ -6,7 +6,7 @@ before_script:
 pages:
   stage: deploy
   script:
-  - bundle exec jekyll build --destination public --baseurl=/mijn-jekyll-project
+  - bundle exec jekyll build --destination public --baseurl=/gressus
   artifacts:
     paths:
     - public
