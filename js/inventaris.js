@@ -3,7 +3,7 @@
   function inventaris(id) {
 
     // URL of the Search API
-    this.API_URL = '/../data/bomeninventaris.json';
+    this.API_URL = '/gressus/data/bomeninventaris.json';
     // The results within the JSON-object
 
     // Initialize App
